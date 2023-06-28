@@ -49,7 +49,8 @@ resource "aws_cloudwatch_event_target" "main" {
 }
 
 module "iam_policy_target" {
-  source = "github.com/geekcell/terraform-aws-iam-policy?ref=v1"
+  source  = "geekcell/iam-policy/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   name            = coalesce(var.target_policy_name, "${var.target_name}-eventbridge")
   use_name_prefix = var.target_policy_name_prefix
@@ -88,7 +89,8 @@ module "iam_policy_target" {
 }
 
 module "iam_role_target" {
-  source = "github.com/geekcell/terraform-aws-iam-role?ref=v1"
+  source  = "geekcell/iam-role/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   name            = coalesce(var.target_role_name, "${var.target_name}-eventbridge")
   use_name_prefix = var.target_role_name_prefix
